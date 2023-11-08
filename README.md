@@ -1,16 +1,11 @@
-# aset_perusahaan_kereta
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Tugas 7
+1. Perbedaan *Stateless* dan *Stateful Widget*
+   * *Stateless Widget*<br>*Stateless widget* adalah *widget* yang tidak memiliki keadaan internal (*state*). Artinya, setelah *widget* ini dibangun dan dirender, ia tidak dapat berubah. *Stateless widget* bergantung sepenuhnya pada data yang diberikan padanya melalui konstruktor dan tidak dapat memodifikasi atau menyimpan data secara internal.
+   * *Stateful Widget*<br>*Stateful widget* adalah *widget* yang  memiliki keadaan internal (*state*) sehingga dapat berubah selama masa hidup *widget* tersebut. Keadaan ini dapat diperbarui dan memicu pembaruan ulang tampilan *widget*. *Stateful widget* digunakan ketika memerlukan perubahan dinamis dalam antarmuka pengguna, seperti ketika pengguna berinteraksi dengan *widget* dan menyebabkan perubahan dalam tampilan.
+3. Daftar *Widget*
+4. Implementasi Daftar Periksa
+   * Membuat Program Futter
+     * lirferf
+   * Membuat Tombol
+   * Memunculkan *Snackbar*
+   * Membedakan Warna Tombol
