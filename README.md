@@ -161,7 +161,7 @@
      Widget build(BuildContext context) {
          Color buttonColor;
          if (item.name == "Lihat Produk") {
-             buttonColor = const Color.fromARGB(255, 33, 56, 170);
+             buttonColor = const Color.fromARGB(255, 26, 45, 141);
          } else if (item.name == "Tambah Produk") {
              buttonColor = Colors.indigo;
          } else {
