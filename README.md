@@ -176,14 +176,16 @@
    * `Navigator.push()`<br>Metode yang menambahkan suatu rute ke dalam *stack* rute yang dikelola oleh Navigator. Metode ini menyebabkan rute yang ditambahkan berada di paling atas *stack*, sehingga rute tersebut akan muncul dan ditampilkan kepada pengguna.
    * `Navigator.pushReplacement()`<br>Metode yang menghapus rute yang sedang ditampilkan kepada pengguna dan menggantinya dengan suatu rute lain. Metode ini menyebabkan aplikasi berpindah dari rute yang sedang ditampilkan kepada pengguna ke suatu rute yang diberikan. Pada *stack* rute yang dikelola Navigator, rute lama di atas *stack* akan digantikan secara langsung oleh rute baru yang diberikan tanpa mengubah kondisi elemen stack yang berada di bawahnya.
 2. *Layout Widget*
-   * Container
-   * Column
-   * Row
-   * ListView
-   * Stack
-   * GridView
-   * Stack
-   * Expanded
+   * Align<br>*Widget* yang menyelaraskan *child*-nya dengan dirinya sendiri dan secara opsional mengukur dirinya sendiri berdasarkan ukuran *child*-nya.
+   * AspectRatio<br>*Widget* yang mencoba mengukur *child*-nya ke rasio aspek tertentu.
+   * Baseline<br>Kontainer yang memosisikan *child*-nya sesuai dengan garis dasar *child* tersebut.
+   * Center<br>Blok penyelarasan yang memusatkan *child*-nya di dalam dirinya sendiri.
+   * ConstrainedBox<br>*Widget* yang memberikan batasan tambahan pada *child*-nya.
+   * Container<br>*Widget* praktis yang menggabungkan *widget* pewarnaan, pemosisian, dan pengukuran.
+   * Expanded<br>*Widget* yang memperluas *child* dari Row, Column, atau Flex.
+   * FittedBox<br>*Widget* yang menskalakan dan memposisikan *child*-nya di dalam dirinya sendiri sesuai dengan kecocokannya.
+   * Padding<br>*Widget* yang menyisipkan *child*-nya berdasarkan *padding* yang diberikan.
+   * Transform<br>*Widget* yang menerapkan transformasi sebelum mewarnai *child*-nya.
 4. Elemen Masukan Formulir
    * Tipe<br>Masukan ini diperlukan untuk membedakan tipe aset, seperti kereta, gerbong, lokomotif, dan lainnya.
    * Nama<br>Masukan ini diperlukan untuk menyimpan nama aset.
