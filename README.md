@@ -177,6 +177,10 @@
    * `Navigator.pushReplacement()`<br>Metode yang menghapus rute yang sedang ditampilkan kepada pengguna dan menggantinya dengan suatu rute lain. Metode ini menyebabkan aplikasi berpindah dari rute yang sedang ditampilkan kepada pengguna ke suatu rute yang diberikan. Pada *stack* rute yang dikelola Navigator, rute lama di atas *stack* akan digantikan secara langsung oleh rute baru yang diberikan tanpa mengubah kondisi elemen stack yang berada di bawahnya.
 2. *Layout Widget*
 4. Elemen Masukan Formulir
-   * dfghjk
+   * Tipe<br>Masukan ini diperlukan untuk membedakan tipe-tipe aset, seperti kereta, gebrong, lokomotif, dan lainnya.
+   * Nama<br>Masukan ini diperlukan untuk menyimpan nama aset.
+   * Pemilik<br>Masukan ini diperlukan untuk menyimpan pemilik aset. Masukan ini memerlukan beberapa karakter huruf kapital yang merupakan kode dipo atau subdipo stasiun pemilik aset.
+   * Jumlah<br>Masukan ini diperlukan untuk menyimpan jumlah aset.
+   * Deskripsi<br>Masukan ini diperlukan untuk memberikan deskripsi maupun informasi tambahan aset.
 5. Penerapan *Clean Architecture*
 6. Implementasi Daftar Periksa
