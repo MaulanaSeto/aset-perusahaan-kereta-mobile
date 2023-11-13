@@ -194,26 +194,55 @@
    * Deskripsi<br>Masukan ini diperlukan untuk memberikan deskripsi maupun informasi tambahan aset.
 4. Penerapan *Clean Architecture*
 5. Implementasi Daftar Periksa
-   * Mmebuat Halaman Formulir
-     Pertama, membuat berkas `asset_form.dart` di folder lib berisi kode berikut.
+   * Mmebuat Halaman Formulir<br>Membuat berkas `asset_form.dart` di folder `lib` berisi kode berikut.
      ```dart
      import 'package:flutter/material.dart';
      import 'package:aset_perusahaan_kereta/widgets/left_drawer.dart';
 
-     class ShopFormPage extends StatefulWidget {
-       const ShopFormPage({super.key});
+     class AssetFormPage extends StatefulWidget {
+       const AssetFormPage({super.key});
 
        @override
-       State<ShopFormPage> createState() => _ShopFormPageState();
+       State<AssetFormPage> createState() => _AssetFormPageState();
      }
 
-     class _ShopFormPageState extends State<ShopFormPage> {
+     class _AssetFormPageState extends State<AssetFormPage> {
+       final _formKey = GlobalKey<FormState>();
+       String _type = "";
+       String _name = "";
+       String _owner = "";
+       int _amount = 0;
+       String _description = "";
+     
        @override
        Widget build(BuildContext context) {
-         return Placeholder();
+         return Scaffold(
+           appBar: AppBar(
+             title: const Center(
+               child: Text(
+                 'Form Tambah Produk',
+               ),
+             ),
+             backgroundColor: Colors.indigo,
+             foregroundColor: Colors.white,
+           ),
+           drawer: const LeftDrawer(),
+           body: Form(
+             child: SingleChildScrollView(
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   //Isi Formulir
+                 ]
+               )
+             ),
+           ),
+         );
        }
      }
      ```
+     * 
+     * sad     
    * Menghubungkan Halaman Formulir dengan Tombol `Tambah Aset`
    * Memunculkan *pop up* Data
    * Membuat *Drawer*
