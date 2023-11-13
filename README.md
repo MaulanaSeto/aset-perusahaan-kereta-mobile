@@ -179,7 +179,7 @@
 4. Elemen Masukan Formulir
    * Tipe<br>Masukan ini diperlukan untuk membedakan tipe aset, seperti kereta, gebrong, lokomotif, dan lainnya.
    * Nama<br>Masukan ini diperlukan untuk menyimpan nama aset.
-   * Pemilik<br>Masukan ini diperlukan untuk menyimpan pemilik aset. Masukan ini memerlukan beberapa karakter huruf kapital yang merupakan kode dipo atau subdipo stasiun pemilik aset.
+   * Pemilik<br>Masukan ini diperlukan untuk menyimpan pemilik aset. Masukan ini memerlukan beberapa karakter huruf kapital sebagai kode dipo atau subdipo stasiun pemilik aset.
    * Jumlah<br>Masukan ini diperlukan untuk menyimpan jumlah aset.
    * Deskripsi<br>Masukan ini diperlukan untuk memberikan deskripsi maupun informasi tambahan aset.
 5. Penerapan *Clean Architecture*
