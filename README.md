@@ -56,9 +56,9 @@
        Kedua, membuat daftar tombol pada kelas MyHomePage berisi objek bertipe `ShopItem` di bawah kode `MyHomePage({Key? key}) : super(key: key);` sesuai kode berikut.
        ```dart
        final List<ShopItem> items = [
-           ShopItem("Lihat Produk", Icons.checklist),
-           ShopItem("Tambah Produk", Icons.add_shopping_cart),
-           ShopItem("Logout", Icons.logout),
+           ShopItem("Lihat Aset", Icons.checklist),
+           ShopItem("Tambah Aset", Icons.add_shopping_cart),
+           ShopItem("Keluar", Icons.logout),
        ];
        ```
        Ketiga, menambahkan pengembalian fungsi `build` dengan kode berikut.
@@ -160,9 +160,9 @@
      ...
      Widget build(BuildContext context) {
          Color buttonColor;
-         if (item.name == "Lihat Produk") {
+         if (item.name == "Lihat Aset") {
              buttonColor = const Color.fromARGB(255, 26, 45, 141);
-         } else if (item.name == "Tambah Produk") {
+         } else if (item.name == "Tambah Aset") {
              buttonColor = Colors.indigo;
          } else {
              buttonColor = const Color.fromARGB(255, 94, 110, 199);
@@ -186,11 +186,34 @@
    * FittedBox<br>*Widget* yang menskalakan dan memposisikan *child*-nya di dalam dirinya sendiri sesuai dengan kecocokannya.
    * Padding<br>*Widget* yang menyisipkan *child*-nya berdasarkan *padding* yang diberikan.
    * Transform<br>*Widget* yang menerapkan transformasi sebelum mewarnai *child*-nya.
-4. Elemen Masukan Formulir
+3. Elemen Masukan Formulir
    * Tipe<br>Masukan ini diperlukan untuk membedakan tipe aset, seperti kereta, gerbong, lokomotif, dan lainnya.
    * Nama<br>Masukan ini diperlukan untuk menyimpan nama aset.
    * Pemilik<br>Masukan ini diperlukan untuk menyimpan pemilik aset. Masukan ini memerlukan beberapa karakter huruf kapital sebagai kode dipo atau subdipo stasiun pemilik aset.
    * Jumlah<br>Masukan ini diperlukan untuk menyimpan jumlah aset.
    * Deskripsi<br>Masukan ini diperlukan untuk memberikan deskripsi maupun informasi tambahan aset.
-5. Penerapan *Clean Architecture*
-6. Implementasi Daftar Periksa
+4. Penerapan *Clean Architecture*
+5. Implementasi Daftar Periksa
+   * Mmebuat Halaman Formulir
+     Pertama, membuat berkas `asset_form.dart` di folder lib berisi kode berikut.
+     ```dart
+     import 'package:flutter/material.dart';
+     import 'package:aset_perusahaan_kereta/widgets/left_drawer.dart';
+
+     class ShopFormPage extends StatefulWidget {
+       const ShopFormPage({super.key});
+
+       @override
+       State<ShopFormPage> createState() => _ShopFormPageState();
+     }
+
+     class _ShopFormPageState extends State<ShopFormPage> {
+       @override
+       Widget build(BuildContext context) {
+         return Placeholder();
+       }
+     }
+     ```
+   * Menghubungkan Halaman Formulir dengan Tombol `Tambah Aset`
+   * Memunculkan *pop up* Data
+   * Membuat *Drawer*
