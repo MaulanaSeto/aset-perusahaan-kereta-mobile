@@ -37,28 +37,28 @@
        Terakhir, megubah kelas induk pada kelas `MyHomePage`, menghapus fungsi `State`, menambahkan fungsi `build` yang mengembalikan `Widget`, dan mengubah bagian kode `({super.key, required this.title})` sesuai kode berikut.
        ```dart
        class MyHomePage extends StatelessWidget {
-           MyHomePage({Key? key}) : super(key: key);
+         MyHomePage({Key? key}) : super(key: key);
 
-           @override
-           Widget build(BuildContext context) {
-           }
+         @override
+         Widget build(BuildContext context) {
+         }
        }
        ```
-     * Menambahkan Teks dan *Card*<br>Pertama, menambahkan kelas ShopItem pada berkas `menu.dart` sesuai kode berikut.
+     * Menambahkan Teks dan *Card*<br>Pertama, menambahkan kelas `ButtonItem` pada berkas `menu.dart` sesuai kode berikut.
        ```dart
-       class ShopItem {
-           final String name;
-           final IconData icon;
+       class ButtonItem {
+         final String name;
+         final IconData icon;
 
-           ShopItem(this.name, this.icon);
+         ButtonItem(this.name, this.icon);
        }
        ```
-       Kedua, membuat daftar tombol pada kelas MyHomePage berisi objek bertipe `ShopItem` di bawah kode `MyHomePage({Key? key}) : super(key: key);` sesuai kode berikut.
+       Kedua, membuat daftar tombol pada kelas MyHomePage berisi objek bertipe `ButtonItem` di bawah kode `MyHomePage({Key? key}) : super(key: key);` sesuai kode berikut.
        ```dart
-       final List<ShopItem> items = [
-           ShopItem("Lihat Aset", Icons.checklist),
-           ShopItem("Tambah Aset", Icons.add_shopping_cart),
-           ShopItem("Keluar", Icons.logout),
+       final List<ButtonItem> items = [
+         ButtonItem("Lihat Aset", Icons.checklist),
+         ButtonItem("Tambah Aset", Icons.add_shopping_cart),
+         ButtonItem("Keluar", Icons.logout),
        ];
        ```
        Ketiga, menambahkan pengembalian fungsi `build` dengan kode berikut.
@@ -96,8 +96,8 @@
                                mainAxisSpacing: 10,
                                crossAxisCount: 3,
                                shrinkWrap: true,
-                               children: items.map((ShopItem item) {
-                                   return ShopCard(item);
+                               children: items.map((ButtonItem item) {
+                                   return ButtonCard(item);
                                }).toList(),
                            ),
                        ],
@@ -106,11 +106,11 @@
            ),
        );
        ```
-       Terakhir, membuat kelas `ShopCard` untuk menampilkan *card* dengan kode berikut.
+       Terakhir, membuat kelas `ButtonCard` untuk menampilkan *card* dengan kode berikut.
        ```dart
-       class ShopCard extends StatelessWidget {
-           final ShopItem item;
-           const ShopCard(this.item, {super.key});
+       class ButtonCard extends StatelessWidget {
+           final ButtonItem item;
+           const ButtonCard(this.item, {super.key});
 
            @override
            Widget build(BuildContext context) {
@@ -192,7 +192,7 @@
    * Pemilik<br>Masukan ini diperlukan untuk menyimpan pemilik aset. Masukan ini memerlukan beberapa karakter huruf kapital sebagai kode dipo atau subdipo stasiun pemilik aset.
    * Jumlah<br>Masukan ini diperlukan untuk menyimpan jumlah aset.
    * Deskripsi<br>Masukan ini diperlukan untuk memberikan deskripsi maupun informasi tambahan aset.
-4. Penerapan *Clean Architecture*
+4. Penerapan *Clean Architecture*<br>Penerapan *clean architecture* pada aplikasi Flutter melibatkan struktur proyek yang terorganisir dengan baik untuk memisahkan konsep-konsep utama seperti logika, UI, dan akses data. *Clean architecture* memastikan bahwa kode dapat diuji dengan baik, mudah dipelihara, dan independen dari perubahan-perubahan pada lapisan tertentu.
 5. Implementasi Daftar Periksa
    * Mmebuat Halaman Formulir<br>Membuat berkas `asset_form.dart` di folder `lib` berisi kode berikut.
      ```dart
@@ -255,7 +255,7 @@
            ),
            onChanged: (String? value) {
              setState(() {
-               _name = value!;
+               _type = value!;
              });
            },
            validator: (String? value) {
@@ -331,11 +331,12 @@
              if (value == null || value.isEmpty) {
                return "Jumlah tidak boleh kosong!";
              }
-             if (int.tryParse(value) == null) {
+             int? val = int.tryParse(value);
+             if (val == null) {
                return "Jumlah harus berupa angka!";
              }
-             if (int.tryParse(value) <= 0) {
-               return "Jumlah harus berupa bilangan bulat positif!";
+             if (val <= 0) {
+               return "Jumlah harus lebih dari 0!";
              }
              return null;
            },
@@ -401,7 +402,7 @@
        ..hideCurrentSnackBar()
        ..showSnackBar(SnackBar(
          content: Text("Kamu telah menekan tombol ${item.name}!")));
-     if (item.name == "Tambah Produk") {
+     if (item.name == "Tambah Aset") {
        Navigator.push(context, MaterialPageRoute(builder: (context) => const AssetFormPage()));
      }
      ...
