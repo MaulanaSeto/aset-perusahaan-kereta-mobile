@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:aset_perusahaan_kereta/menu.dart';
+import 'package:aset_perusahaan_kereta/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
