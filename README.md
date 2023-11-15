@@ -241,8 +241,262 @@
        }
      }
      ```
-     * 
-     * sad     
-   * Menghubungkan Halaman Formulir dengan Tombol `Tambah Aset`
-   * Memunculkan *pop up* Data
-   * Membuat *Drawer*
+     * Menambahkan Lima Masukan<br>Menambahkan dan memvalidasi elemen masukan pada bagian komentar `//Isi Formulir` sesuai dengan kode berikut.
+       ```dart
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: TextFormField(
+           decoration: InputDecoration(
+             hintText: "Tipe",
+             labelText: "Tipe",
+             border: OutlineInputBorder(
+               borderRadius: BorderRadius.circular(5.0),
+             ),
+           ),
+           onChanged: (String? value) {
+             setState(() {
+               _name = value!;
+             });
+           },
+           validator: (String? value) {
+             if (value == null || value.isEmpty) {
+               return "Tipe tidak boleh kosong!";
+             }
+              return null;
+           },
+         ),
+       ),
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: TextFormField(
+           decoration: InputDecoration(
+             hintText: "Nama",
+             labelText: "Nama",
+             border: OutlineInputBorder(
+               borderRadius: BorderRadius.circular(5.0),
+             ),
+           ),
+           onChanged: (String? value) {
+             setState(() {
+               _name = value!;
+             });
+           },
+           validator: (String? value) {
+             if (value == null || value.isEmpty) {
+               return "Nama tidak boleh kosong!";
+             }
+             return null;
+           },
+         ),
+       ),
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: TextFormField(
+           decoration: InputDecoration(
+             hintText: "Pemilik",
+             labelText: "Pemilik",
+             border: OutlineInputBorder(
+               borderRadius: BorderRadius.circular(5.0),
+             ),
+           ),
+           onChanged: (String? value) {
+             setState(() {
+               _owner = value!;
+             });
+           },
+           validator: (String? value) {
+             if (value == null || value.isEmpty) {
+               return "Pemilik tidak boleh kosong!";
+             }
+             return null;
+           },
+         ),
+       ),
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: TextFormField(
+           decoration: InputDecoration(
+             hintText: "Jumlah",
+             labelText: "Jumlah",
+             border: OutlineInputBorder(
+               borderRadius: BorderRadius.circular(5.0),
+             ),
+           ),
+           onChanged: (String? value) {
+             setState(() {
+               _amount = int.parse(value!);
+             });
+           },
+           validator: (String? value) {
+             if (value == null || value.isEmpty) {
+               return "Jumlah tidak boleh kosong!";
+             }
+             if (int.tryParse(value) == null) {
+               return "Jumlah harus berupa angka!";
+             }
+             if (int.tryParse(value) <= 0) {
+               return "Jumlah harus berupa bilangan bulat positif!";
+             }
+             return null;
+           },
+         ),
+       ),
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: TextFormField(
+           decoration: InputDecoration(
+             hintText: "Deskripsi",
+             labelText: "Deskripsi",
+             border: OutlineInputBorder(
+               borderRadius: BorderRadius.circular(5.0),
+             ),
+           ),
+           onChanged: (String? value) {
+             setState(() {
+               _description = value!;
+             });
+           },
+           validator: (String? value) {
+             if (value == null || value.isEmpty) {
+               return "Deskripsi tidak boleh kosong!";
+             }
+             return null;
+           },
+         ),
+       ),
+       ```
+     * Membuat Tombol `Simpan`<br>Membuat tombol `Simpan` di bagian yang sama dengan kode berikut.
+       ```dart
+       Align(
+         alignment: Alignment.bottomCenter,
+         child: Padding(
+           padding: const EdgeInsets.all(8.0),
+           child: ElevatedButton(
+             style: ButtonStyle(
+               backgroundColor: MaterialStateProperty.all(Colors.indigo),
+             ),
+             onPressed: () {
+               if (_formKey.currentState!.validate()) {
+                 showDialog(
+                   context: context,
+                   builder: (context) {
+                     //Kotak Dialog
+                   },
+                 );
+                 _formKey.currentState!.reset();
+               }
+             },
+             child: const Text(
+               "Simpan",
+               style: TextStyle(color: Colors.white),
+             ),
+           ),
+         ),
+       ),
+       ```
+   * Menghubungkan Halaman Formulir dengan Tombol `Tambah Aset`<br>Menambahkan kode pada properti fungsi `onTap` pada *widget* `Material` sebagai nilai yang dikembalikan oleh fungsi `build` di kelas `ShopCard`, tepatnya di dalam *child widget* `InkWell` dalam properti `child` di berkas `menu.dart` sesuai kode berikut.
+     ```dart
+     ...
+     ScaffoldMessenger.of(context)
+       ..hideCurrentSnackBar()
+       ..showSnackBar(SnackBar(
+         content: Text("Kamu telah menekan tombol ${item.name}!")));
+     if (item.name == "Tambah Produk") {
+       Navigator.push(context, MaterialPageRoute(builder: (context) => const AssetFormPage()));
+     }
+     ...
+     ```
+   * Memunculkan *Pop-Up* Data<br>Membuat `AllerDialog` pada bagian komentar `//Kotak Dialog` di berkas `asset_form.dart` dengan kode berikut.
+     ```dart
+     return AlertDialog(
+       title: const Text('Produk berhasil tersimpan'),
+       content: SingleChildScrollView(
+         child: Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
+             Text('Tipe: $_type'),
+             Text('Nama: $_name'),
+             Text('Pemilik: $_owner'),
+             Text('Jumlah: $_amount'),
+             Text('Deskripsi: $_description')
+           ],
+         ),
+       ),
+       actions: [
+         TextButton(
+           child: const Text('OK'),
+           onPressed: () {
+             Navigator.pop(context);
+           },
+         ),
+       ],
+     );
+     ```
+   * Membuat *Drawer*<br>Pertama, membuat folder `widgets` di dalam folder `lib` lalu membuat berkas `left_drawer.dart` di folder `widgets` berisi kode berikut.
+     ```dart
+     import 'package:flutter/material.dart';
+     import 'package:aset_perusahaan_kereta/menu.dart';
+     import 'package:aset_perusahaan_kereta/asset_form.dart';
+    
+     class LeftDrawer extends StatelessWidget {
+       const LeftDrawer({super.key});
+    
+       @override
+       Widget build(BuildContext context) {
+         return Drawer(
+           child: ListView(
+             children: [
+               const DrawerHeader(
+                 decoration: BoxDecoration(
+                   color: Colors.indigo,
+                 ),
+                 child: Column(
+                   children: [
+                     Text(
+                       'Aset',
+                       textAlign: TextAlign.center,
+                       style: TextStyle(
+                         fontSize: 30,
+                         fontWeight: FontWeight.bold,
+                         color: Colors.white,
+                       ),
+                     ),
+                     Padding(padding: EdgeInsets.all(10)),
+                     Text(
+                       "Catat aset Anda!",
+                       textAlign: TextAlign.center,
+                       style: TextStyle(
+                         fontSize: 15,
+                         color: Colors.white,
+                         fontWeight: FontWeight.normal,
+                       ),
+                     ),
+                   ],
+                 ),
+               ),
+               ListTile(
+                 leading: const Icon(Icons.home_outlined),
+                 title: const Text('Halaman Aset'),
+                 onTap: () {
+                   Navigator.pushReplacement(
+                     context,
+                     MaterialPageRoute(
+                       builder: (context) => MyHomePage(),
+                     ),
+                   );
+                 },
+               ),
+               ListTile(
+                 leading: const Icon(Icons.add_shopping_cart),
+                 title: const Text('Tambah Produk'),
+                 onTap: () {
+                   Navigator.push(context, MaterialPageRoute(
+                     builder: (context) => const AssetFormPage()));
+                 },
+               ), 
+             ],
+           ),
+         );
+       }
+     }
+     ```
