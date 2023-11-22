@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:aset_perusahaan_kereta/asset_form.dart';
 import 'package:aset_perusahaan_kereta/widgets/left_drawer.dart';
 import 'package:aset_perusahaan_kereta/widgets/asset_card.dart';
+import 'package:aset_perusahaan_kereta/screens/list_product.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -84,6 +85,8 @@ class ButtonCard extends StatelessWidget {
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
           if (item.name == "Tambah Aset") {
             Navigator.push(context, MaterialPageRoute(builder: (context) => const AssetFormPage()));
+          } else if (item.name == "Lihat Aset") {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductPage()));
           }
         },
         child: Container(
